@@ -1,0 +1,45 @@
+<div class="title">QUẢN LÝ BÁO CÁO</div>
+
+                        <div class="content">
+                            <div *ngIf="roleUser == 4" class="content__btn">
+                                <div (click)="loadUser(1)" class="content__item">
+                                    <div class="btn">
+                                        Kinh doanh
+                                    </div>
+                                </div>
+                                <div (click)="loadUser(2)" class="content__item">
+                                    <div class="btn">
+                                        Kế toán
+                                    </div>
+                                </div>
+                                <div (click)="loadUser(3)" class="content__item">
+                                    <div class="btn">
+                                        Kỹ thuật
+                                    </div>
+                                </div>
+                            </div>
+                            <table class="content__table">
+                                <thead>
+                                    <th style="width: 5%" >ID</th>
+                                    <th style="width: 15%" >Họ tên</th>
+                                    <th style="width: 15%" >Bộ phận</th>
+                                    <th style="width: 50%" >Mô tả</th>
+                                    <th style="width: 15%" >Hành động</th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let report of reports" >
+                                        <td>{{report?.id}}</td>
+                                        <td>{{report?.User.name}}</td>
+                                        <td *ngIf="(report.User.role ==1)" >Kinh doanh</td>
+                                        <td *ngIf="(report.User.role ==2)" >Kế toán</td>
+                                        <td *ngIf="(report.User.role ==3)" >Kĩ thuật</td>
+                               
+                                        <td>{{report?.description}}</td>
+                                        <td>
+                               
+                                            <i (click)="delete(report.id)"  style="color: red;" class="fas fa-trash-alt icon"></i>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>

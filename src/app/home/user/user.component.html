@@ -1,0 +1,45 @@
+<div class="title">THÔNG TIN CÁ NHÂN</div>
+                        <div class="content">
+                            <div class="content__info">
+                                <div class="content__item">
+                                    <img src="https://img.icons8.com/office/30/000000/id-verified.png"/>
+                                    <label for=""> ID :</label>
+                                    <span>{{user?.id}}</span>
+                                </div>
+                                <div class="content__item">
+                                    <img src="https://img.icons8.com/office/30/000000/employee-card.png"/>
+                                    <label for="">Họ và tên :</label>
+                                    <span>{{user?.name}}</span>
+                                </div>
+                                <div class="content__item">
+                                    <img src="https://img.icons8.com/office/30/000000/businessman.png"/>
+                                    <label for="">Chức vụ :</label>
+                                    <span *ngIf="(user?.position == 1)" >Nhân viên</span>
+                                    <span *ngIf="(user?.position == 2)" >Quản lý</span>
+                                    <span *ngIf="(user?.position == 3)" >Giám đốc</span>
+                                </div>
+                                <div class="content__item">
+                                    <img src="https://img.icons8.com/office/30/000000/conference.png"/>
+                                    <label for="">Bộ phận :</label>
+                                    <span *ngIf="(user?.role == 1)" >Kinh doanh</span>
+                                    <span *ngIf="(user?.role == 2)" >Kế toán</span>
+                                    <span *ngIf="(user?.role == 3)" >Kỹ thuật</span>
+                                    <span *ngIf="(user?.role == 4)" >CEO</span>
+                                </div>
+                                <div class="content__item">
+                                    <img src="https://img.icons8.com/office/30/000000/secured-letter--v5.png"/>
+                                    <label for="">Email :</label>
+                                    <span>{{user?.email}}</span>
+                                </div>
+                                <div class="content__item">
+                                    <img src="https://img.icons8.com/office/30/000000/phone.png"/>
+                                    <label for="">Số điện thoại:</label>
+                                    <span>{{user?.phone}}</span>
+                                </div>
+                                <div class="content__item">
+                                    <img src="https://img.icons8.com/office/30/000000/address.png"/>
+                                    <label for="">Địa chỉ:</label>
+                                    <span>{{user?.address}}</span>
+                                </div>
+                            </div>
+                        </div>

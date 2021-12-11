@@ -1,0 +1,65 @@
+$color1: #00308f;
+$color2: #1974d2;
+$color3: #8edfff;
+$color4: #b2ffff;
+$color5: #ededed;
+$text-color: #000;
+$text-white: white;
+$text-gray: #737373;
+$hover: rgb(23, 103, 182);
+.header {
+  position: sticky;
+  z-index: 999;
+  top: 0;
+  border-bottom: 1px solid #ededed;
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+  }
+  &__title {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__logo {
+    cursor: pointer;
+    width: 45%;
+    h1 {
+      color: $color1;
+      font-size: 4rem;
+    }
+  }
+
+  &__nav {
+    width: 45%;
+    padding: 1rem 0;
+    &-group {
+      width: 100%;
+      float: right;
+      display: flex;
+      align-items: center;
+      justify-content: end;
+    }
+    &-item {
+      cursor: pointer;
+      width: 85%;
+      list-style: none;
+      text-align: end;
+      font-size: 1.9rem;
+      margin-right: 1rem;
+      color: $text-color;
+      &:last-child {
+        width: 5%;
+        i {
+          font-size: 1.8rem;
+          padding: 0 0.8rem;
+          color: $text-color;
+          color: red;
+        }
+      }
+    }
+  }
+}

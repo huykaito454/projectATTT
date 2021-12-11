@@ -1,0 +1,55 @@
+<app-header></app-header>
+<div class="home">
+    <div class="home__left">
+        <div class="account">
+            <img *ngIf="position == 3" src="https://img.icons8.com/office/120/000000/vip.png"/>
+            <img *ngIf="position == 2" src="https://img.icons8.com/office/120/000000/manager.png"/>
+            <img *ngIf="position == 1" src="https://img.icons8.com/officel/120/000000/businessman.png"/>
+            <p *ngIf="position == 1" >Nhân viên</p>
+            <p *ngIf="position == 2" >Quản lý</p>
+            <p *ngIf="position == 3" >Giám đốc</p>
+            <p >{{user?.name}}</p>
+        </div>
+        <div [routerLink]="['/home-user']" routerLinkActive="router-link-active"  class="home__left-item">
+            <img src="https://img.icons8.com/office/40/000000/parse-resumes.png"/>
+            <p>Cá nhân</p>
+        </div>
+        <div [routerLink]="['/home-job']" routerLinkActive="router-link-active"  class="home__left-item ">
+            <img src="https://img.icons8.com/office/40/000000/calendar.png"/>
+            <p>Công việc</p>
+        </div>
+        <div [routerLink]="['/home-report']" routerLinkActive="router-link-active"  class="home__left-item ">
+            <img src="https://img.icons8.com/office/40/000000/upload--v1.png"/>
+            <p>Báo cáo</p>
+        </div>
+        <div (click)="loadManageReport()" class="home__left-item ">
+            <img src="https://img.icons8.com/office/40/000000/Archive-List-Of-Parts.png"/>
+            <p>Xem báo cáo</p>
+        </div>
+        <div (click)="loadManageJob()" class="home__left-item ">
+            <img src="https://img.icons8.com/office/40/000000/training.png"/>
+            Quản lý công việc
+        </div>
+        <div (click)="loadManageProject()" class="home__left-item">
+            <img src="https://img.icons8.com/office/40/000000/project-setup.png"/>
+            Quản lý dự án
+        </div>
+        <div (click)="loadManageHuman()"class="home__left-item">
+            <img src="https://img.icons8.com/office/40/000000/conference-call.png"/>
+            Quản lý nhân sự
+        </div>
+        <div (click)="loadPartner()" class="home__left-item">
+            <img src="https://img.icons8.com/office/40/000000/handshake.png"/>
+            Đối tác
+        </div>
+        <div (click)="loadContract()" class="home__left-item">
+            <img src="https://img.icons8.com/office/40/000000/contract.png"/>
+            Hợp đồng
+        </div>
+        
+    </div>
+    <div class="home__right">
+        <div class="home__right-container">
+            <router-outlet  ></router-outlet>
+        </div>
+    </div>

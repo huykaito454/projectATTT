@@ -1,0 +1,19 @@
+<div class="title">BÁO CÁO</div>
+                        <div class="content">
+                            <form (ngSubmit)="post()" class="content__form">
+                                <p class="content__form-title" >Thêm báo cáo mới</p>
+                                <div class="content__item">
+                                    <img src="https://img.icons8.com/office/30/000000/identification-documents--v1.png"/>
+                                    <label for="">Mã nhân viên:</label>
+                                    <input readonly type="text" value="{{id}}" >
+                                </div>
+                                <div class="content__item">
+                                    <img src="https://img.icons8.com/office/30/000000/documents.png"/>
+                                    <label for="">Nội dung:</label>
+                                    <input type="text" [(ngModel)]="desc" name="desc" >
+                                </div>
+                                <button type="submit" class="content__item">
+                                XÁC NHẬN
+                                </button>
+                            </form>
+                        </div>

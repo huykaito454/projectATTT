@@ -1,0 +1,39 @@
+<div class="title">ĐỐI TÁC</div>
+                        <div class="content">
+                            <form (ngSubmit)="post()" class="content__form">
+                                <p class="content__form-title" >Thêm thông tin đối tác mới</p>
+                                <div class="content__item">
+                                    <img src="https://img.icons8.com/office/30/000000/handshake.png"/>
+                                    <label for="">Đối tác:</label>
+                                    <input type="text" [(ngModel)]="name" name="name" required >
+                                </div>
+                                <div class="content__item">
+                                    <img src="https://img.icons8.com/office/30/000000/document.png"/>
+                                    <label for="">Mô tả:</label>
+                                    <input type="text" [(ngModel)]="description" name="decs">
+                                  
+                                </div>
+                                <button type="submit" class="content__item">
+                                XÁC NHẬN
+                                </button>
+                            </form>
+                            <table class="content__table">
+                                <thead>
+                                    <th style="width: 5%" >ID</th>
+                                    <th style="width: 15%" >Đối tác</th>
+                                    <th style="width: 65%" >Thông tin đối tác</th>
+                                    <th style="width: 15%" >Hình động</th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let partner of partners" >
+                                        <td>{{partner?.id}}</td>
+                                       <td><input  type="text" [(ngModel)]="partner.name" ></td>
+                                       <td><input  type="text" [(ngModel)]="partner.description" ></td>
+                                        <td>
+                                            <i (click)="put(partner)" class="fas fa-edit icon"></i>
+                                            <i (click)="delete(partner.id)"  style="color: red;" class="fas fa-trash-alt icon"></i>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>

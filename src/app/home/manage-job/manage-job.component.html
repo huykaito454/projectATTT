@@ -1,0 +1,80 @@
+<div class="title">QUẢN LÝ CÔNG VIỆC</div>
+<div class="content">
+    <div class="content__info">
+        <form (ngSubmit)="postJob()" class="content__form">
+            <p class="content__form-title" >Thêm công việc</p>
+            <div class="content__item">
+                <img src="https://img.icons8.com/office/30/000000/businessman.png"/>
+                <label for="">Nhân viên:</label>
+                <select (change)="select($event)" >
+                    <option >Chọn nhân viên </option>
+                    <option *ngFor="let user of users" [value]="user.id" >{{user?.name}}</option>
+                </select>
+            </div>
+            <div class="content__item">
+                <img src="https://img.icons8.com/office/30/000000/rules.png"/>
+                <label for="">Công việc:</label>
+                <input type="text" [(ngModel)]="job" name="job">
+            </div>
+            <div class="content__item">
+                <img src="https://img.icons8.com/office/30/000000/rules.png"/>
+                <label for="">Mô tả:</label>
+                <input type="text" [(ngModel)]="jobDesc" name="job-desc" >
+            </div>
+            <button type="submit" class="content__item">
+            XÁC NHẬN
+            </button>
+        </form>
+        <div *ngIf="roleUser == 4" class="content__btn">
+            <div (click)="loadUser(1)" class="content__item">
+                <div class="btn">
+                    Kinh doanh
+                </div>
+            </div>
+            <div (click)="loadUser(2)" class="content__item">
+                <div class="btn">
+                    Kế toán
+                </div>
+            </div>
+            <div (click)="loadUser(3)" class="content__item">
+                <div class="btn">
+                    Kỹ thuật
+                </div>
+            </div>
+        </div>
+        <table class="content__table">
+            <thead>
+                <th style="width: 5%" >ID</th>
+                <th style="width: 25%" >Tên nhân viên</th>
+                <th style="width: 15%" >Công việc</th>
+                <th style="width: 25%" >Mô tả</th>
+                <th style="width: 15%" >Trạng thái</th>
+                <th style="width: 15%" >Hành động</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let job of jobs" >
+                    <td style="text-align: center;"  >{{job?.id}}</td>
+                    <td >{{job?.User.name}}</td>
+                    <td>
+                        <input type="text" [(ngModel)]="job.name">
+                    </td>
+                    <td>
+                        <input type="text" [(ngModel)]="job.description">
+                    </td>
+                    <td   style="text-align: center;" > 
+                        <p (click)="updateJob(job.id)" *ngIf="(job.status == 1)"  class="btn-status1" >
+                        Riêng tư
+                    </p> 
+                        <p (click)="updateJob(job.id)" *ngIf="(job.status == 2)"  class="btn-status" >
+                        Công khai
+                    </p> 
+                        </td>
+                    <td>
+                         <i (click)="putJobManage(job)" class="fas fa-edit icon"></i>
+                        <i  (click)="delete(job.id)" style="color: red;" class="fas fa-trash-alt icon"></i>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

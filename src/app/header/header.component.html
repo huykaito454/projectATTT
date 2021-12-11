@@ -1,0 +1,20 @@
+<div class="header">
+    <div class="container">
+        <div class="header__title">
+            <a  class="header__logo">
+                <h1 *ngIf="role == 1" >KINH DOANH</h1>
+                <h1 *ngIf="role == 2" >KẾ TOÁN</h1>
+                <h1 *ngIf="role == 3" >KỸ THUẬT</h1>
+                <h1 *ngIf="role == 3" >CEO</h1>
+            </a>
+            <div class="header__nav">
+                <ul class="header__nav-group">
+                    <div class="header__nav-item">Đăng xuất</div>
+                    <div (click)="logOut()" class="header__nav-item">
+                        <i class="fas fa-power-off"></i>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

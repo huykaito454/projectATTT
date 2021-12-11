@@ -1,0 +1,29 @@
+<div class="login">
+    <div class="login__left">
+        <form (ngSubmit)="OnSubmit()" action="" class="login__form" >
+            <h3 class="login__title">Đăng nhập</h3>
+            <div class="login__form-group">
+                <div class="login__form-item">
+                    <label for="username">Email :</label>
+                    <input type="email" id="email" [(ngModel)]="email" name="email" required >
+                </div>
+                <div class="login__form-item">
+                    <label for="password">Mật khẩu :</label>
+                    <input type="password" id="password" [(ngModel)]="password" name="password" required>
+                </div>
+                <div class="login__form-check">
+                    <input type="checkbox" name="" id="checkbox" >
+                    <label for="checkbox">Nhớ mật khẩu ?</label>
+                </div>
+                <div class="login__form-btn" >
+                    <button type="submit"><i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="login__right">
+        <div class="login__img">
+            <img src="https://www.almanstar.com/img/login_graphics.png" alt="">
+        </div>
+    </div>
+</div>

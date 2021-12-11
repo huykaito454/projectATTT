@@ -1,0 +1,105 @@
+<div class="title">QUẢN LÝ NHÂN SỰ</div>
+                        <div class="content">
+                            <form (ngSubmit)="postUser()" class="content__form">
+                                <p class="content__form-title" >Thêm nhân viên mới</p>
+                                <div class="content__item">
+                                    <img src="https://img.icons8.com/office/30/000000/employee-card.png"/>
+                                    <label for="">Tên nhân viên:</label>
+                                    <input type="text" [(ngModel)]="name" name="name">
+                                </div>
+                                <div class="content__item">
+                                    <img src="https://img.icons8.com/office/30/000000/secured-letter.png"/>
+                                    <label for="">Email:</label>
+                                    <input type="email" [(ngModel)]="email" name="email">
+                                </div>
+                                <div class="content__item">
+                                    <img src="https://img.icons8.com/office/30/000000/key-security.png"/>
+                                    <label for="">Mật khẩu:</label>
+                                    <input type="text" [(ngModel)]="password" name="password" >
+                                </div>
+                                <div class="content__item">
+                                    <img src="https://img.icons8.com/office/30/000000/phone.png"/>
+                                    <label for="">Số điện thoại:</label>
+                                    <input type="text" [(ngModel)]="phone" name="phone">
+                                </div>
+                                <div class="content__item">
+                                    <img src="https://img.icons8.com/office/30/000000/address.png"/>
+                                    <label for="">Địa chỉ:</label>
+                                    <input type="text" [(ngModel)]="address" name="address" >
+                                </div>
+                                <div *ngIf="role == 4" class="content__item">
+                                    <img src="https://img.icons8.com/office/30/000000/administrator-male.png"/>
+                                    <label for="">Chúc vụ:</label>
+                                    <select (change)="selectP($event)">
+                                        <option>Chọn chức vụ</option>
+                                        <option [value]="1" >Nhân viên</option>
+                                        <option [value]="2" >Quản lý</option>
+                                    </select>
+                                </div>
+                                <div *ngIf="role == 4" class="content__item">
+                                    <img src="https://img.icons8.com/office/30/000000/conference.png"/>
+                                    <label for="">Bộ phận:</label>
+                                    <select (change)="selectR($event)">
+                                        <option>Chọn bộ bận</option>
+                                        <option [value]="1" >Kinh doanh</option>
+                                        <option [value]="2" >Kế toán</option>
+                                        <option [value]="3" >Kĩ thuật</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="content__item">
+                                XÁC NHẬN
+                                </button>
+                            </form>
+                            <div *ngIf="role == 4" class="content__btn">
+                                <div (click)="loadUser(1)" class="content__item">
+                                    <div class="btn">
+                                        Kinh doanh
+                                    </div>
+                                </div>
+                                <div (click)="loadUser(2)" class="content__item">
+                                    <div class="btn">
+                                        Kế toán
+                                    </div>
+                                </div>
+                                <div (click)="loadUser(3)" class="content__item">
+                                    <div class="btn">
+                                        Kỹ thuật
+                                    </div>
+                                </div>
+                            </div>
+                            <table class="content__table">
+                                <thead>
+                                    <th style="width: 5%" >ID</th>
+                                    <th style="width: 15%" >Tên NV</th>
+                                    <th style="width: 15%" >Email</th>
+                                    <th style="width: 15%" >SĐT</th>
+                                    <th style="width: 20%" >Địa chỉ</th>
+                                    <th style="width: 7%" >Chức vụ</th>
+                                    <th style="width: 7%" >Thuộc phòng</th>
+                                    <th style="width: 11%" >Hành động</th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let user of users" >
+                                        <td>{{user?.id}}</td>
+                                        <td><input type="text" [(ngModel)]="user.name"></td>
+                                        <td><input readonly type="text" [(ngModel)]="user.email" ></td>
+                                        <td><input type="text" [(ngModel)]="user.phone"></td>
+                                        <td><input type="text" [(ngModel)]="user.address"></td>
+                                        <td>
+                                            <input *ngIf="user.position == 1" readonly type="text" value="Nhân viên">
+                                            <input *ngIf="user.position == 2" readonly type="text" value="Quản lý">
+                                            <input *ngIf="user.position == 3" readonly type="text" value="Giám đốc">
+                                        </td>
+                                        <td>
+                                            <input *ngIf="user.role == 1"  readonly type="text" value="Kinh doanh">
+                                            <input *ngIf="user.role == 2"  readonly type="text" value="Kế toán">
+                                            <input *ngIf="user.role == 3"  readonly type="text" value="Kỹ thuật">
+                                        </td>
+                                        <td>
+                                            <i (click)="updateUser(user)" class="fas fa-edit icon"></i>
+                                            <i (click)="deleteUser(user.id)" style="color: red;" class="fas fa-trash-alt icon"></i>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>

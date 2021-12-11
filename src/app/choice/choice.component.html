@@ -1,0 +1,26 @@
+
+<div class="wrapper">
+    <div class="choice">
+        <div class="choice__title">BỘ PHẬN CỦA BẠN</div>
+        <div class="choice__group">
+            <div (click)="choice(1)" class="choice__item">
+                <img src="https://img.icons8.com/office/80/000000/business.png"/>
+                <p>KINH DOANH</p>
+            </div>
+            <div (click)="choice(2)" class="choice__item">
+                <img src="https://img.icons8.com/office/80/000000/accounting.png"/>
+                <p>KẾ TOÁN</p>
+            </div>
+            <div (click)="choice(3)" class="choice__item">
+                <img src="https://img.icons8.com/office/80/000000/work.png"/>
+                <p>KĨ THUẬT</p>
+            </div>
+        </div>
+        <div *ngIf="role == 4" class="choice__group vip">
+            <div (click)="choice(4)" class="choice__item">
+                <img src="https://img.icons8.com/office/80/000000/vip.png"/>
+                <p>CEO</p>
+            </div>
+        </div>
+    </div>
+</div>
