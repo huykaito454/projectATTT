@@ -63,7 +63,7 @@
                 <td><input type="text" [(ngModel)]="project.description" ></td>
                 <td>
                     <i class="fas fa-edit icon"></i>
-                    <i  style="color: red;" class="fas fa-trash-alt icon"></i>
+                    <i (click)="delete(project.id)" style="color: red;" class="fas fa-trash-alt icon"></i>
                 </td>
             </tr>
         </tbody>

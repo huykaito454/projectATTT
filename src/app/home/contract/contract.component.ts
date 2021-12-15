@@ -24,6 +24,9 @@ export class ContractComponent implements OnInit {
       if(data.message == 'Ok' && data.errCode == 0){
         this.contracts = data.listContract;
       }
+      else if (data.message == 'No data' && data.errCode == 2){
+        alert('Không có dữ liệu');
+      }
       else{
         this.router.navigate(["/home"]);
       }

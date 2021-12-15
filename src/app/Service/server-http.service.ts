@@ -188,6 +188,12 @@ export class ServerHttpService {
       .delete<any>(url,this.httpOptions)
       .pipe(catchError(this.handleError));
   }
+   public deleteProject(data:any): Observable<any> {
+    const url = `${this.endpoint}/api/deleteProject?projectId=${data}`;
+    return this.httpClient
+      .delete<any>(url,this.httpOptions)
+      .pipe(catchError(this.handleError));
+  }
   //--------------------------------------------------------------------------------------- Admin
   // public getAllUser(): Observable<any> {
   //   const url = `${this.endpoint}/admin/api/get-all-user`;

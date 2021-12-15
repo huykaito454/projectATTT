@@ -31,6 +31,9 @@ export class ManageHumanComponent implements OnInit {
           if(data.message == 'Ok' && data.errCode == 0){
             this.users= data.listUser ;
           }
+          else if (data.message == 'No data' && data.errCode == 2){
+            alert('Không có dữ liệu');
+          }
           else{
             this.router.navigate(["/home"]);
           }
@@ -46,6 +49,9 @@ export class ManageHumanComponent implements OnInit {
       console.log(data2);
       if(data2.message == 'Ok' && data2.errCode == 0){
         this.users= data2.listUser ;
+      }
+      else if (data2.message == 'No data' && data2.errCode == 2){
+        alert('Không có dữ liệu');
       }
       else{
         this.router.navigate(["/home"]);

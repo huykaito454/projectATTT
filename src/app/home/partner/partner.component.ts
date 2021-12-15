@@ -26,6 +26,9 @@ export class PartnerComponent implements OnInit {
       if(data.message == 'Ok' && data.errCode == 0){
         this.partners = data.listPartner;
       }
+      else if (data.message == 'No data' && data.errCode == 2){
+        alert('Không có dữ liệu');
+      }
       else{
         this.router.navigate(["/home"]);
       }

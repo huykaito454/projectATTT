@@ -15,6 +15,7 @@ export class ManageProjectComponent implements OnInit {
   public name:any;
   public roleId:any;
   public desc:any;
+  public idUser:any;
   constructor(private getProject:ServerHttpService, private loadId : IdService,private router : Router) { }
 
   ngOnInit(): void {
@@ -23,10 +24,14 @@ export class ManageProjectComponent implements OnInit {
     })
     this.getProject.getUser().subscribe(data => {
       this.role = data.role;
+      this.idUser = data.id;
       if(this.role < 4){
         this.getProject.getProjectByRole(this.role).subscribe(data2 => {
           if(data2.message == 'Ok' && data2.errCode == 0){
             this.projects = data2.listProject;
+          }
+          else if (data2.message == 'No data' && data2.errCode == 2){
+            alert('Không có dữ liệu');
           }
           else{
             this.router.navigate(["/home"]);
@@ -41,6 +46,9 @@ export class ManageProjectComponent implements OnInit {
       if(data2.message == 'Ok' && data2.errCode == 0){
         this.projects = data2.listProject;
       }
+      else if (data2.message == 'No data' && data2.errCode == 2){
+        alert('Không có dữ liệu');
+      }
       else{
         this.router.navigate(["/home"]);
       }
@@ -52,10 +60,9 @@ selectR(event: any) {
 }
 post(){
   if(this.role < 4){
-    const newData = {name : this.name , description : this.desc , userId : sessionStorage.getItem('id'), role : this.role}
+    const newData = {name : this.name , description : this.desc, role : this.role,userId: this.idUser }
     this.getProject.postProjectByRole(newData).subscribe(data => {
-      console.log(data);
-      if(data.message == "Thanh cong"){
+      if(data.message.message == "Thanh cong"){
         alert("Thành công");
         this.router.navigate(['/home-manage-project'])
         .then(() => {
@@ -63,15 +70,14 @@ post(){
         })
       }
       else{
-        alert(data.message);
+        alert(data.message.message);
       }
     })
   }
   else{
-    const newData = {name : this.name , description : this.desc , userId : sessionStorage.getItem('id'), role : this.roleId}
+    const newData = {name : this.name , description : this.desc , role : this.roleId, userId: this.idUser }
     this.getProject.postProjectByRole(newData).subscribe(data => {
-      
-      if(data.message == "Thanh cong"){
+      if(data.message.message == "Thanh cong"){
         alert("Thành công");
         this.router.navigate(['/home-manage-project'])
         .then(() => {
@@ -84,4 +90,19 @@ post(){
     })
   }
 }
+
+delete(data:any){
+  this.getProject.deleteProject(data).subscribe(data2 => {
+    if(data2.message == 'Ok' && data2.errCode == 0){
+      alert('Thành công');
+      this.router.navigate(["/home-manage-project"]).then(() => {
+        window.location.reload();
+      });
+    }
+    else{
+      alert('Thất bại');
+    }
+})
+}
+
 }

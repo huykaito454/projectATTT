@@ -42,7 +42,7 @@ export class ManageReportComponent implements OnInit {
         this.reports = data2.listReport;
       }
       else if (data2.message == 'No data' && data2.errCode == 2){
-        alert('Không có báo cáo nào');
+        alert('Không có dữ liệu');
       }
       else{
         this.router.navigate(["/home"]);
